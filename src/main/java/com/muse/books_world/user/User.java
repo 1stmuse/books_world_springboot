@@ -1,5 +1,7 @@
 package com.muse.books_world.user;
 
+import com.muse.books_world.book.Book;
+import com.muse.books_world.history.BookTransactionHistory;
 import com.muse.books_world.role.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -42,6 +44,12 @@ public class User implements UserDetails, Principal {
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
+
+    @OneToMany(mappedBy = "owner")
+    private List<Book> books;
+
+    @OneToMany(mappedBy = "user")
+    private List<BookTransactionHistory> histories;
 
 
     @CreatedDate

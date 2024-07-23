@@ -1,4 +1,9 @@
+server:
+  port: 8070
 spring:
+  output:
+    ansi:
+      enabled: ALWAYS
   datasource:
     url: jdbc:postgresql://localhost:5432/books_world
     username: muse
