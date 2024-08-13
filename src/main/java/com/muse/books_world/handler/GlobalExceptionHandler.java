@@ -1,5 +1,6 @@
 package com.muse.books_world.handler;
 
+import com.muse.books_world.exception.OperationNotPermittedexception;
 import jakarta.mail.MessagingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -100,6 +101,20 @@ public class GlobalExceptionHandler {
                 .body(
                         ExceptionResponse.builder()
                                 .businessErrorDescription("Internal error, contact the admin")
+                                .error(exp.getMessage())
+                                .build()
+                );
+    }
+
+    @ExceptionHandler(OperationNotPermittedexception.class)
+    public ResponseEntity<ExceptionResponse> handleException(
+            OperationNotPermittedexception exp
+    ){
+        //log
+        exp.printStackTrace();
+        return ResponseEntity.status(BAD_REQUEST)
+                .body(
+                        ExceptionResponse.builder()
                                 .error(exp.getMessage())
                                 .build()
                 );

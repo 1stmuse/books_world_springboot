@@ -1,5 +1,5 @@
 server:
-  port: 8070
+  port: 8000
 spring:
   output:
     ansi:
@@ -41,3 +41,15 @@ application:
   mailing:
     frontend:
       activation_url: http://localhost:4200/activate-account
+  file:
+    upload:
+      photo-output-path: ./uploads
+
+
+
+
+
+
+
+
+
